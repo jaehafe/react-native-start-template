@@ -1,26 +1,20 @@
+import {Button} from '@ant-design/react-native';
 import React from 'react';
-import {Platform, Text, View} from 'react-native';
-
-// import Button from '@ant-design/react-native/lib/button';
-// import {Toast} from '@ant-design/react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import styled from 'styled-components/native';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
 
-const Home = () => {
-  const statusBarHeight = getStatusBarHeight();
-
+export default function Home() {
   return (
-    <Container marginTop={Platform.OS === 'ios' ? statusBarHeight + 30 : 0}>
-      <View />
-      <Text>Home</Text>
-    </Container>
+    <SafeAreaView>
+      <JetText>Jetbrains</JetText>
+      <Button onPress={() => {}}>open drawer</Button>
+    </SafeAreaView>
   );
-};
+}
 
-export default Home;
+const JetText = styled.Text`
+  font-family: 'JetBrainsMono-Medium';
 
-const Container = styled.View<{marginTop?: number}>`
-  border: 1px solid;
-  margin-top: ${({marginTop}) => `${marginTop}px`};
+  color: ${({theme}) => theme.colors.black};
 `;
